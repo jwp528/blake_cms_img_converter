@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <title>Add content to cms</title>
+
+         <!-- include other stuff -->
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+         <!-- development version, includes helpful console warnings -->
+         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+         <!-- production version, optimized for size and speed -->
+         <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+
+         <script src="assets/js/bootstrap/bootstrap.min.js"></script>
+         <script src="assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+         <!-- load the main script-->
+         <script src="assets/js/main.js"></script>
+
+         <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css" />
+    </head>
+    <body>
+        <div id="app">
+            <h1>{{status}}</h1>
+
+            <div class="col-md-6 col-sm-12 mb-5">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                    </div>
+                    <div class="custom-file ">
+                        <input type="file" class="custom-file-input" id="imgUpload" ref="myFiles" @change="assignFiles" aria-describedby="imgUpload" multiple />
+                        <label id="fileLabel" class="custom-file-label" for="imgUpload">{{fileStatus}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="images" v-for="(image, index) in images">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Name</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="image1.png" value="image.name" />
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Description</span>
+                    </div>
+                    <textarea class="form-control" rows="10" placeholder="Description">{{image.description}}</textarea>
+                </div>
+
+                <p>Image:</p>
+                <img :src="image.data" width="50%" />
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Base64 Data</span>
+                    </div>
+                    <textarea class="form-control" rows="10" placeholder="Description">{{image.data}}</textarea>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+    </body>
+</html>
