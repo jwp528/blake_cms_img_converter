@@ -12,11 +12,6 @@ $(function() {
             files: [],
             images: []
         },//end data
-        watch:{
-            images: function(){
-                console.log(this.images);
-            }
-        },//end watch
 
         computed: {
             fileStatus: function(){
@@ -50,8 +45,8 @@ $(function() {
                     let r = new FileReader();
                     r.onload = function(data){
                         var img = {
-                            name: "",
-                            imgName: name,
+                            name: name,
+                            imgName: `Image ${i}`,
                             desc: "",
                             data: data.target.result
                         }//end img
