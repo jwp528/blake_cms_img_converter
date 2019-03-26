@@ -12,7 +12,6 @@ $(function() {
             files: [],
             images: []
         },//end data
-
         watch:{
             images: function(){
                 console.log(this.images);
@@ -41,23 +40,24 @@ $(function() {
             uploadImages: function(){
                 this.status = "Scanning files";
 
-                let r = new FileReader();
-                r.onload = function(data){
-                    var img = {
-                        name: "",
-                        desc: "",
-                        data: data.target.result
-                    }//end img
-
-                    app.images.push(img);
-                }//end onload
-
                 for(var i = 0; i < this.files.length; ++i){
                     //if file is not an image, skip it
                     if(!this.files[i].type.includes("image"))
                         continue;
 
+                        var name = this.files[i].name;
 
+                    let r = new FileReader();
+                    r.onload = function(data){
+                        var img = {
+                            name: "",
+                            imgName: name,
+                            desc: "",
+                            data: data.target.result
+                        }//end img
+
+                        app.images.push(img);
+                    }//end onload
 
                     r.readAsDataURL(this.files[i]);
                 }//end for

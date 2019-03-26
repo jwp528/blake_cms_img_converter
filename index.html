@@ -35,7 +35,8 @@
                 </div>
             </div>
 
-            <div class="images" v-for="(image, index) in images">
+            <div class="col-4 p-5 d-inline-block" v-for="(image, index) in images">
+                <h3>{{image.imgName}}</h3>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">Name</span>
